@@ -4,7 +4,7 @@
 #include <time.h>
 
 #define SCREEN_WIDTH 90
-#define SCREEN_HEIGHT 26
+#define SCREEN_HEIGHT 25
 #define WIN_WIDTH 70
 
 using namespace std;
@@ -50,7 +50,7 @@ void drawBorder()
     for (int i = 0; i < SCREEN_WIDTH + 1; i++)
     {
         gotoxy(i, SCREEN_HEIGHT + 1);
-        cout << "#";
+        cout << "^";
     }
 
     for (int i = 0; i < SCREEN_HEIGHT + 1; i++)
@@ -161,11 +161,12 @@ void instructions()
     system("cls");
     cout << "Instructions";
     cout << "\n----------------";
-    cout << "\n On the left side, you will see falling characters.";
-    cout << "\n You have to keep them from touching the ground.";
-    cout << "\n Press the respective key from the keyboard to keep playing.";
-    cout << "\n\n Press 'escape' to exit.";
-    cout << "\n\nPress any key to go back to the menu.";
+    cout << "\n On the left side, you will see falling characters."
+         << "\n You have to keep them from touching the ground."
+         << "\n Press the respective key from the keyboard to keep playing."
+         << "\nThe letters aren't Case Sensitive."
+         << "\n\n Press 'escape' to exit."
+         << "\n\nPress any key to go back to the menu.";
     getch();
 }
 
@@ -187,18 +188,18 @@ void play()
         switch (difficulty)
         {
         case 1:
-        sleepDuration = 700;
-        break;
+            sleepDuration = 700;
+            break;
         case 2:
-        sleepDuration = 500;
-        break;
+            sleepDuration = 500;
+            break;
         case 3:
-        sleepDuration = 300;
-        break;
+            sleepDuration = 300;
+            break;
         case 4:
-        sleepDuration = 200;
-        break;
-        
+            sleepDuration = 200;
+            break;
+
         default:
             break;
         }
@@ -246,11 +247,11 @@ void play()
             else if (!correctKeyPress)
             {
                 wrongKeyPresses++;
-                gotoxy(SCREEN_WIDTH/2, SCREEN_HEIGHT+4);
-                cout << "Warning!! You have pressed the wrong character. " << 3 - wrongKeyPresses << " Lives Left" << endl;
+                gotoxy(SCREEN_WIDTH / 2, SCREEN_HEIGHT + 4);
+                cout << "Warning!! You have pressed the wrong Key. " << 3 - wrongKeyPresses << " Lives Left" << endl;
                 if (wrongKeyPresses == 3)
                 {
-                    gameover("You have pressed the wrong character!!!");
+                    gameover("You have pressed the wrong Key 3 times!!!");
                     return;
                 }
             }
@@ -276,7 +277,6 @@ void play()
             break;
     }
 }
-
 
 int main()
 {
